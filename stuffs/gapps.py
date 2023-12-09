@@ -23,8 +23,8 @@ class Gapps(General):
         "googlepixelconfig-common.tar.lz"
         ]
     skip = [
-        "setupwizarddefault-x86_64.tar.lz",
-        "setupwizardtablet-x86_64.tar.lz"
+        "setupwizarddefault-arm64.tar.lz",
+        "setupwizardtablet-arm64.tar.lz"
         ]
 
     def download(self):
