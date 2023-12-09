@@ -11,7 +11,7 @@ class Gapps(General):
             "armeabi-v7a": ["https://cfhcable.dl.sourceforge.net/project/opengapps/arm/20220215/open_gapps-arm-10.0-pico-20220215.zip", "1d00ffa4594734d477b10f2e0ee19c0b"]
         }
     arch = host()
-    print("arch: "+arch)
+    print("arch: "+str(arch))
     download_loc = get_download_dir()
     dl_link = dl_links[arch[0]][0]
     dl_file_name = os.path.join(download_loc, "open_gapps.zip")
