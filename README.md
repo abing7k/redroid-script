@@ -38,7 +38,15 @@ Open your browser,and open your_ip:48000. Click on the H264 Converter
 
 ![](https://image.newbee666.cf/img/202312151943304.png)
 
+Pull up from the bottom of the screen
 
+
+
+![](https://image.newbee666.cf/img/202312151950429.png)
+
+
+
+![](https://image.newbee666.cf/img/202312151952545.png)
 
 
 
