@@ -4,9 +4,14 @@ https://github.com/ayasa520/redroid-script
 
 But it seems that the author is no longer maintaining it, and the pull request has not been responded. Some file addresses have become invalidm.I only changed the valid file download address, and did not change the other code
 
-
-
 # You can use my images(only arm64)
+
+```bash
+## install required kernel modules
+apt install linux-modules-extra-`uname -r`
+modprobe binder_linux devices="binder,hwbinder,vndbinder"
+modprobe ashmem_linux
+```
 
 ```bash
 docker run -itd --restart=always --privileged \
