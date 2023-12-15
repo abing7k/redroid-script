@@ -7,7 +7,7 @@ from tools.helper import bcolors, download_file, host, print_color, run, get_dow
 
 class Magisk(General):
     download_loc = get_download_dir()
-    dl_link = "https://mpl1.androidfilehost.com/dl/Mjn0CznEOJYybkSOkzXWIQ/1702636218/10620683726822077179/Magisk+Delta+25206+canary+%284dbd8358%29.apk"
+    dl_link = "https://mgb1.androidfilehost.com/dl/_E1ugpo3KLudP2K-WauRfQ/1702724403/10620683726822077179/Magisk+Delta+25206+canary+%284dbd8358%29.apk"
     dl_file_name = os.path.join(download_loc, "magisk.apk")
     extract_to = "/tmp/magisk_unpack"
     copy_dir = "./magisk"
