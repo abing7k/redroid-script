@@ -23,9 +23,17 @@ class Gapps(General):
         "defaultframework-common.tar.lz",
         "googlepixelconfig-common.tar.lz"
         ]
+
+    if arch == ('arm64-v8a', 64):
+        skip_1 = 'setupwizarddefault-x86_64.tar.lz'
+        skip_2 = "setupwizardtablet-x86_64.tar.lz"
+        
+    if arch == ('x86_64', 64):
+        skip_1 = 'setupwizarddefault-arm64.tar.lz'
+        skip_2 = "setupwizardtablet-arm64.tar.lz"
     skip = [
-        "setupwizarddefault-arm64.tar.lz",
-        "setupwizardtablet-arm64.tar.lz"
+        skip_1,
+        skip_2
         ]
 
     def download(self):
