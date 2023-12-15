@@ -4,7 +4,47 @@ https://github.com/ayasa520/redroid-script
 
 But it seems that the author is no longer maintaining it, and the pull request has not been responded. Some file addresses have become invalidm.I only changed the valid file download address, and did not change the other code
 
-# Remote-Android Script
+
+
+# You can use my images(only arm64)
+
+```bash
+docker run -itd --restart=always --privileged \
+  --name a11_1 \
+  -v ~/redroid/redroid01/data:/data \
+  -p 11101:5555 \
+  abing7k/redroid:a11_magisk_arm \
+  androidboot.redroid_gpu_mode=guest
+```
+
+It has 4 tags
+
+1. abing7k/redroid:a11_magisk_arm
+2. abing7k/redroid:a11_gapps_arm
+3. abing7k/redroid:a11_gapps_magisk_arm
+4. abing7k/redroid:a11_arm
+
+
+
+If you want connect to this android.You can run scrcpy-web
+
+```bash
+docker run --rm -itd --privileged --name scrcpy-web -p 48000:8000/tcp  abing7k/scrcpy-web
+
+docker exec -it scrcpy-web adb connect your_ip:11101
+```
+
+Open your browser,and open your_ip:48000. Click on the H264 Converter
+
+![](https://image.newbee666.cf/img/202312151943304.png)
+
+
+
+
+
+# If you want your own image
+
+## Remote-Android Script
 
 This script adds Gapps, Magisk and libndk to redroid **without recompiling the entire image**
 If redroid-script doesn't work, please create an issue
