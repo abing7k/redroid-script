@@ -19,6 +19,7 @@ class Gapps(General):
     copy_dir = "./gapps"
     extract_to = "/tmp/ogapps/extract"
     non_apks = [
+        "vending-common.tar.lz",
         "defaultetc-common.tar.lz",
         "defaultframework-common.tar.lz",
         "googlepixelconfig-common.tar.lz"
