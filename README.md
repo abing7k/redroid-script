@@ -52,14 +52,16 @@
 
    
 
-   It has 6 tags
+   It has 8 tags
 
    1. abing7k/redroid:a11_magisk_arm
    2. abing7k/redroid:a11_gapps_arm
    3. abing7k/redroid:a11_gapps_magisk_arm
    4. abing7k/redroid:a11_arm
    5. abing7k/redroid:a11_magisk_ndk_amd
-   6. abing7k/redroid:a11_ndk_amd
+   6. abing7k/redroid:a11_gapps_magisk_ndk_amd
+   7. abing7k/redroid:a11_gapps_ndk_amd
+   8. abing7k/redroid:a11_ndk_amd
 
    
 
@@ -114,8 +116,8 @@
    Use `-a` or `--android-version` to specify the Android version of the image being pulled. The value can be `8.1.0`, `9.0.0`, `10.0.0`, `11.0.0`, `12.0.0`, `12.0.0_64only` or `13.0.0`. The default is 11.0.0.
 
    ```bash
-   # pull the latest image
-   python redroid.py -a 11.0.0
+# pull the latest image
+python redroid.py -a 11.0.0
    ```
 
    ## Add OpenGapps to ReDroid image
@@ -123,7 +125,7 @@
    <img src="./assets/3.png" style="zoom:50%;" />
 
    ```bash
-   python redroid.py -g
+python redroid.py -g
    ```
 
    ## Add libndk arm translation to ReDroid image
@@ -135,7 +137,7 @@
    libndk seems to have better performance than libhoudini on AMD.
 
    ```bash
-   python redroid.py -n
+python redroid.py -n
    ```
 
    ## Add Magisk to ReDroid image
@@ -147,7 +149,7 @@
    
 
    ```bash
-   python redroid.py -m
+python redroid.py -m
    ```
 
    ## Add widevine DRM(L3) to ReDroid image
@@ -155,7 +157,7 @@
    ![](assets/4.png)
 
    ```
-   python redroid.py -w
+python redroid.py -w
    ```
 
    
@@ -165,18 +167,18 @@
    This command will add Gapps, Magisk, Libndk, Widevine to the ReDroid image at the same time.
 
    ```bash
-   python redroid.py -a 11.0.0 -gmnw
+python redroid.py -a 11.0.0 -gmnw
    ```
 
    Then start the docker container.
 
    ```bash
-   docker run -itd --restart=always --privileged \
-     --name a11_1 \
-     -v ~/redroid/redroid01/data:/data \
-     -p 11101:5555 \
-     redroid/redroid:a11_magisk_arm \
-     androidboot.redroid_gpu_mode=guest
+docker run -itd --restart=always --privileged \
+  --name a11_1 \
+  -v ~/redroid/redroid01/data:/data \
+  -p 11101:5555 \
+  redroid/redroid:a11_magisk_arm \
+  androidboot.redroid_gpu_mode=guest
    ```
 
    
@@ -217,14 +219,13 @@
 
    ## Credits
 
-   1. [remote-android](https://github.com/remote-android)
-   2. [waydroid_script](https://github.com/casualsnek/waydroid_script)
-   3. [Magisk Delta](https://huskydg.github.io/magisk-files/)
-   4. [vendor_intel_proprietary_houdini](https://github.com/supremegamers/vendor_intel_proprietary_houdini)
+      1. [remote-android](https://github.com/remote-android)
+      2. [waydroid_script](https://github.com/casualsnek/waydroid_script)
+      3. [Magisk Delta](https://huskydg.github.io/magisk-files/)
+      4. [vendor_intel_proprietary_houdini](https://github.com/supremegamers/vendor_intel_proprietary_houdini)
 
 # 创造不易，感谢支持
 
 ![](https://image.newbee666.cf/img/202401170025220.jpg)
 
 ![](https://image.newbee666.cf/img/202401170026937.jpg)
-
