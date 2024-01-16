@@ -4,7 +4,7 @@ https://github.com/ayasa520/redroid-script
 
 But it seems that the author is no longer maintaining it, and the pull request has not been responded. Some file addresses have become invalidm.I only changed the valid file download address, and did not change the other code
 
-# You can use my images(only arm64)
+# You can use my images(arm64)
 
 ```bash
 ## install required kernel modules
@@ -22,12 +22,44 @@ docker run -itd --restart=always --privileged \
   androidboot.redroid_gpu_mode=guest
 ```
 
-It has 4 tags
+# You can use my images(amd64)
+
+```bash
+## install required kernel modules
+apt install linux-modules-extra-`uname -r`
+modprobe binder_linux devices="binder,hwbinder,vndbinder"
+modprobe ashmem_linux
+```
+
+**But the kernel modules failed after reboot in AMD. You can set a script to run these commands before booting up**
+
+```bash
+docker run -itd --restart=always --privileged \
+  --name a11_01 \
+  -v ~/redroid/redroid01/data:/data \
+  -p 11101:5555 \
+  abing7k/redroid:a11_magisk_ndk_amd \
+  androidboot.redroid_gpu_mode=auto \
+  ro.product.cpu.abilist0=x86_64,arm64-v8a,x86,armeabi-v7a,armeabi \
+  ro.product.cpu.abilist64=x86_64,arm64-v8a \
+  ro.product.cpu.abilist32=x86,armeabi-v7a,armeabi \
+  ro.dalvik.vm.isa.arm=x86 \
+  ro.dalvik.vm.isa.arm64=x86_64 \
+  ro.enable.native.bridge.exec=1 \
+  ro.dalvik.vm.native.bridge=libndk_translation.so \
+  ro.ndk_translation.version=0.2.2
+```
+
+
+
+It has 6 tags
 
 1. abing7k/redroid:a11_magisk_arm
 2. abing7k/redroid:a11_gapps_arm
 3. abing7k/redroid:a11_gapps_magisk_arm
 4. abing7k/redroid:a11_arm
+5. abing7k/redroid:a11_magisk_ndk_amd
+6. abing7k/redroid:a11_ndk_amd
 
 
 
@@ -139,34 +171,15 @@ python redroid.py -a 11.0.0 -gmnw
 Then start the docker container.
 
 ```bash
-docker run -itd --rm --privileged \
-    -v ~/data:/data \
-    -p 5555:5555 \
-    redroid/redroid:11.0.0-gapps-ndk-magisk-widevine \
-ro.product.cpu.abilist=x86_64,arm64-v8a,x86,armeabi-v7a,armeabi \
-    ro.product.cpu.abilist64=x86_64,arm64-v8a \
-    ro.product.cpu.abilist32=x86,armeabi-v7a,armeabi \
-    ro.dalvik.vm.isa.arm=x86 \
-    ro.dalvik.vm.isa.arm64=x86_64 \
-    ro.enable.native.bridge.exec=1 \
-    ro.dalvik.vm.native.bridge=libndk_translation.so \
-    ro.ndk_translation.version=0.2.2 \
+docker run -itd --restart=always --privileged \
+  --name a11_1 \
+  -v ~/redroid/redroid01/data:/data \
+  -p 11101:5555 \
+  redroid/redroid:a11_magisk_arm \
+  androidboot.redroid_gpu_mode=guest
 ```
 
-If you need to use libndk on `redroid:12.0.0_64only` image, you should start the container with the following command
 
-```bash
-docker run -itd --rm --privileged \
-    -v ~/data12:/data \
-    -p 5555:5555 \
-    redroid/redroid:12.0.0_64only-ndk \
-    androidboot.use_memfd=1 \
-    ro.product.cpu.abilist=x86_64,arm64-v8a \
-    ro.product.cpu.abilist64=x86_64,arm64-v8a \
-    ro.dalvik.vm.isa.arm64=x86_64 \
-    ro.enable.native.bridge.exec=1 \
-    ro.dalvik.vm.native.bridge=libndk_translation.so
-```
 
 ## Troubleshooting
 
@@ -178,11 +191,12 @@ docker run -itd --rm --privileged \
 
   1. Run below command on host
 
-  ```
+  ```bash
   adb root
-  adb shell 'sqlite3 /data/data/com.google.android.gsf/databases/gservices.db \
-  "select * from main where name = \"android_id\";"'
+  adb shell settings get secure android_id
   ```
+
+  ![](https://image.newbee666.cf/img/202401162356635.png)
 
   2. Grab device id and register on this website: https://www.google.com/android/uncertified/
 
@@ -193,6 +207,12 @@ docker run -itd --rm --privileged \
 - libhoudini doesn't work
 
   I have no idea. I can't get any version of libhoudini to work on redroid.
+
+- If you want to install APK, you can use the adb install command.
+
+  
+
+  
 
 
 ## Credits
