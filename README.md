@@ -1,223 +1,229 @@
-# Original author:
+1. # Original author:
 
-https://github.com/ayasa520/redroid-script
+   https://github.com/ayasa520/redroid-script
 
-But it seems that the author is no longer maintaining it, and the pull request has not been responded. Some file addresses have become invalidm.I only changed the valid file download address, and did not change the other code
+   But it seems that the author is no longer maintaining it, and the pull request has not been responded. Some file addresses have become invalidm.I only changed the valid file download address, and did not change the other code
 
-# You can use my images(arm64)
+   # You can use my images(arm64)
 
-```bash
-## install required kernel modules
-apt install linux-modules-extra-`uname -r`
-modprobe binder_linux devices="binder,hwbinder,vndbinder"
-modprobe ashmem_linux
-```
+   ```bash
+   ## install required kernel modules
+   apt install linux-modules-extra-`uname -r`
+   modprobe binder_linux devices="binder,hwbinder,vndbinder"
+   modprobe ashmem_linux
+   ```
 
-```bash
-docker run -itd --restart=always --privileged \
-  --name a11_1 \
-  -v ~/redroid/redroid01/data:/data \
-  -p 11101:5555 \
-  abing7k/redroid:a11_magisk_arm \
-  androidboot.redroid_gpu_mode=guest
-```
+   ```bash
+   docker run -itd --restart=always --privileged \
+     --name a11_1 \
+     -v ~/redroid/redroid01/data:/data \
+     -p 11101:5555 \
+     abing7k/redroid:a11_magisk_arm \
+     androidboot.redroid_gpu_mode=guest
+   ```
 
-# You can use my images(amd64)
+   # You can use my images(amd64)
 
-```bash
-## install required kernel modules
-apt install linux-modules-extra-`uname -r`
-modprobe binder_linux devices="binder,hwbinder,vndbinder"
-modprobe ashmem_linux
-```
+   ```bash
+   ## install required kernel modules
+   apt install linux-modules-extra-`uname -r`
+   modprobe binder_linux devices="binder,hwbinder,vndbinder"
+   modprobe ashmem_linux
+   ```
 
-**But the kernel modules failed after reboot in AMD. You can set a script to run these commands before booting up**
+   **But the kernel modules failed after reboot in AMD. You can set a script to run these commands before booting up**
 
-```bash
-docker run -itd --restart=always --privileged \
-  --name a11_01 \
-  -v ~/redroid/redroid01/data:/data \
-  -p 11101:5555 \
-  abing7k/redroid:a11_magisk_ndk_amd \
-  androidboot.redroid_gpu_mode=auto \
-  ro.product.cpu.abilist0=x86_64,arm64-v8a,x86,armeabi-v7a,armeabi \
-  ro.product.cpu.abilist64=x86_64,arm64-v8a \
-  ro.product.cpu.abilist32=x86,armeabi-v7a,armeabi \
-  ro.dalvik.vm.isa.arm=x86 \
-  ro.dalvik.vm.isa.arm64=x86_64 \
-  ro.enable.native.bridge.exec=1 \
-  ro.dalvik.vm.native.bridge=libndk_translation.so \
-  ro.ndk_translation.version=0.2.2
-```
+   ```bash
+   docker run -itd --restart=always --privileged \
+     --name a11_01 \
+     -v ~/redroid/redroid01/data:/data \
+     -p 11101:5555 \
+     abing7k/redroid:a11_magisk_ndk_amd \
+     androidboot.redroid_gpu_mode=auto \
+     ro.product.cpu.abilist0=x86_64,arm64-v8a,x86,armeabi-v7a,armeabi \
+     ro.product.cpu.abilist64=x86_64,arm64-v8a \
+     ro.product.cpu.abilist32=x86,armeabi-v7a,armeabi \
+     ro.dalvik.vm.isa.arm=x86 \
+     ro.dalvik.vm.isa.arm64=x86_64 \
+     ro.enable.native.bridge.exec=1 \
+     ro.dalvik.vm.native.bridge=libndk_translation.so \
+     ro.ndk_translation.version=0.2.2
+   ```
 
+   
 
+   It has 6 tags
 
-It has 6 tags
+   1. abing7k/redroid:a11_magisk_arm
+   2. abing7k/redroid:a11_gapps_arm
+   3. abing7k/redroid:a11_gapps_magisk_arm
+   4. abing7k/redroid:a11_arm
+   5. abing7k/redroid:a11_magisk_ndk_amd
+   6. abing7k/redroid:a11_ndk_amd
 
-1. abing7k/redroid:a11_magisk_arm
-2. abing7k/redroid:a11_gapps_arm
-3. abing7k/redroid:a11_gapps_magisk_arm
-4. abing7k/redroid:a11_arm
-5. abing7k/redroid:a11_magisk_ndk_amd
-6. abing7k/redroid:a11_ndk_amd
+   
 
+   If you want connect to this android.You can run scrcpy-web
 
+   ```bash
+   docker run --rm -itd --privileged --name scrcpy-web -p 8000:8000/tcp emptysuns/scrcpy-web:v0.1
+   
+   docker exec -it scrcpy-web adb connect your_ip:11101
+   ```
 
-If you want connect to this android.You can run scrcpy-web
+   Open your browser,and open your_ip:48000. Click on the H264 Converter
 
-```bash
-docker run --rm -itd --privileged --name scrcpy-web -p 8000:8000/tcp emptysuns/scrcpy-web:v0.1
+   ![](https://image.newbee666.cf/img/202312151943304.png)
 
-docker exec -it scrcpy-web adb connect your_ip:11101
-```
+   Pull up from the bottom of the screen
 
-Open your browser,and open your_ip:48000. Click on the H264 Converter
+   
 
-![](https://image.newbee666.cf/img/202312151943304.png)
+   ![](https://image.newbee666.cf/img/202312151950429.png)
 
-Pull up from the bottom of the screen
+   
 
+   ![](https://image.newbee666.cf/img/202312151952545.png)
 
+   
 
-![](https://image.newbee666.cf/img/202312151950429.png)
+   # If you want your own image
 
+   ## Remote-Android Script
 
+   This script adds Gapps, Magisk and libndk to redroid **without recompiling the entire image**
+   If redroid-script doesn't work, please create an issue
 
-![](https://image.newbee666.cf/img/202312151952545.png)
+   ## Dependencies
 
+   - lzip
 
+   ## Specify container type
 
-# If you want your own image
+   Specify container type. Default is docker
 
-## Remote-Android Script
+   option:
 
-This script adds Gapps, Magisk and libndk to redroid **without recompiling the entire image**
-If redroid-script doesn't work, please create an issue
+   ```
+    -c {docker,podman}, --container {docker,podman}
+   ```
 
-## Dependencies
 
-- lzip
+   ## Specify an Android version
 
-## Specify container type
+   Use `-a` or `--android-version` to specify the Android version of the image being pulled. The value can be `8.1.0`, `9.0.0`, `10.0.0`, `11.0.0`, `12.0.0`, `12.0.0_64only` or `13.0.0`. The default is 11.0.0.
 
-Specify container type. Default is docker
+   ```bash
+   # pull the latest image
+   python redroid.py -a 11.0.0
+   ```
 
-option:
+   ## Add OpenGapps to ReDroid image
 
-```
- -c {docker,podman}, --container {docker,podman}
-```
+   <img src="./assets/3.png" style="zoom:50%;" />
 
+   ```bash
+   python redroid.py -g
+   ```
 
-## Specify an Android version
+   ## Add libndk arm translation to ReDroid image
 
-Use `-a` or `--android-version` to specify the Android version of the image being pulled. The value can be `8.1.0`, `9.0.0`, `10.0.0`, `11.0.0`, `12.0.0`, `12.0.0_64only` or `13.0.0`. The default is 11.0.0.
+   <img src="./assets/2.png" style="zoom:50%;" />
 
-```bash
-# pull the latest image
-python redroid.py -a 11.0.0
-```
+   libndk_translation from guybrush firmware.
 
-## Add OpenGapps to ReDroid image
+   libndk seems to have better performance than libhoudini on AMD.
 
-<img src="./assets/3.png" style="zoom:50%;" />
+   ```bash
+   python redroid.py -n
+   ```
 
-```bash
-python redroid.py -g
-```
+   ## Add Magisk to ReDroid image
 
-## Add libndk arm translation to ReDroid image
+   <img src="./assets/1.png" style="zoom:50%;" />
 
-<img src="./assets/2.png" style="zoom:50%;" />
+   Zygisk and modules like LSPosed should work.
 
-libndk_translation from guybrush firmware.
+   
 
-libndk seems to have better performance than libhoudini on AMD.
+   ```bash
+   python redroid.py -m
+   ```
 
-```bash
-python redroid.py -n
-```
+   ## Add widevine DRM(L3) to ReDroid image
 
-## Add Magisk to ReDroid image
+   ![](assets/4.png)
 
-<img src="./assets/1.png" style="zoom:50%;" />
+   ```
+   python redroid.py -w
+   ```
 
-Zygisk and modules like LSPosed should work.
+   
 
+   ## Example
 
+   This command will add Gapps, Magisk, Libndk, Widevine to the ReDroid image at the same time.
 
-```bash
-python redroid.py -m
-```
+   ```bash
+   python redroid.py -a 11.0.0 -gmnw
+   ```
 
-## Add widevine DRM(L3) to ReDroid image
+   Then start the docker container.
 
-![](assets/4.png)
+   ```bash
+   docker run -itd --restart=always --privileged \
+     --name a11_1 \
+     -v ~/redroid/redroid01/data:/data \
+     -p 11101:5555 \
+     redroid/redroid:a11_magisk_arm \
+     androidboot.redroid_gpu_mode=guest
+   ```
 
-```
-python redroid.py -w
-```
+   
 
+   ## Troubleshooting
 
+   - Magisk installed: N/A
 
-## Example
+     According to some feedback from WayDroid users, changing the kernel may solve this issue. https://t.me/WayDroid/126202
 
-This command will add Gapps, Magisk, Libndk, Widevine to the ReDroid image at the same time.
+   - The device isn't Play Protect certified
 
-```bash
-python redroid.py -a 11.0.0 -gmnw
-```
+     1. Run below command on host
 
-Then start the docker container.
+     ```bash
+     adb root
+     adb shell settings get secure android_id
+     ```
 
-```bash
-docker run -itd --restart=always --privileged \
-  --name a11_1 \
-  -v ~/redroid/redroid01/data:/data \
-  -p 11101:5555 \
-  redroid/redroid:a11_magisk_arm \
-  androidboot.redroid_gpu_mode=guest
-```
+     ![](https://image.newbee666.cf/img/202401162356635.png)
 
+     2. Grab device id and register on this website: https://www.google.com/android/uncertified/
 
+   - libndk doesn't work
 
-## Troubleshooting
+     I only made it work on `redroid/redroid:11.0.0`. Also, turning on Zygisk seems to break libndk for 32 bit apps, but arm64 apps still work.
 
-- Magisk installed: N/A
+   - libhoudini doesn't work
 
-  According to some feedback from WayDroid users, changing the kernel may solve this issue. https://t.me/WayDroid/126202
+     I have no idea. I can't get any version of libhoudini to work on redroid.
 
-- The device isn't Play Protect certified
+   - If you want to install APK, you can use the adb install command.
 
-  1. Run below command on host
+     
 
-  ```bash
-  adb root
-  adb shell settings get secure android_id
-  ```
+     
 
-  ![](https://image.newbee666.cf/img/202401162356635.png)
 
-  2. Grab device id and register on this website: https://www.google.com/android/uncertified/
+   ## Credits
 
-- libndk doesn't work
+   1. [remote-android](https://github.com/remote-android)
+   2. [waydroid_script](https://github.com/casualsnek/waydroid_script)
+   3. [Magisk Delta](https://huskydg.github.io/magisk-files/)
+   4. [vendor_intel_proprietary_houdini](https://github.com/supremegamers/vendor_intel_proprietary_houdini)
 
-  I only made it work on `redroid/redroid:11.0.0`. Also, turning on Zygisk seems to break libndk for 32 bit apps, but arm64 apps still work.
+# 创造不易，感谢支持
 
-- libhoudini doesn't work
+![](https://image.newbee666.cf/img/202401170025220.jpg)
 
-  I have no idea. I can't get any version of libhoudini to work on redroid.
-
-- If you want to install APK, you can use the adb install command.
-
-  
-
-  
-
-
-## Credits
-
-1. [remote-android](https://github.com/remote-android)
-2. [waydroid_script](https://github.com/casualsnek/waydroid_script)
-3. [Magisk Delta](https://huskydg.github.io/magisk-files/)
-4. [vendor_intel_proprietary_houdini](https://github.com/supremegamers/vendor_intel_proprietary_houdini)
+![](https://image.newbee666.cf/img/202401170026937.jpg)
