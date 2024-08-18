@@ -75,17 +75,17 @@
 
    Open your browser,and open your_ip:48000. Click on the H264 Converter
 
-   ![](https://image.newbee666.cf/img/202312151943304.png)
+   ![](assets/202312151943304.png)
 
    Pull up from the bottom of the screen
 
    
 
-   ![](https://image.newbee666.cf/img/202312151950429.png)
+   ![](assets/202312151950429.png)
 
    
 
-   ![](https://image.newbee666.cf/img/202312151952545.png)
+   ![](assets/202312151952545.png)
 
    
 
@@ -198,7 +198,7 @@ docker run -itd --restart=always --privileged \
      adb shell settings get secure android_id
      ```
 
-     ![](https://image.newbee666.cf/img/202401162356635.png)
+     ![](assets/202401162356635.png)
 
      2. Grab device id and register on this website: https://www.google.com/android/uncertified/
 
