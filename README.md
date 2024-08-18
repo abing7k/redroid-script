@@ -4,7 +4,7 @@
 
    But it seems that the author is no longer maintaining it, and the pull request has not been responded. Some file addresses have become invalidm.I only changed the valid file download address, and did not change the other code
 
-   # You can use my images(Oracle Cloud arm64)
+   # You can use my images(run on the Oracle Cloud Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-167-generic aarch64))
 
    ```bash
    ## install required kernel modules
