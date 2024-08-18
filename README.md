@@ -225,5 +225,4 @@ docker run -itd --restart=always --privileged \
       4. [vendor_intel_proprietary_houdini](https://github.com/supremegamers/vendor_intel_proprietary_houdini)
 
 # 创造不易，感谢支持
-
-![](https://img-96t.pages.dev/photo_2024-08-18_19-46-09.jpg)
+![](assets/photo_2024-08-18_19-46-09.jpg)
