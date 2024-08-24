@@ -4,7 +4,7 @@
 
    But it seems that the author is no longer maintaining it, and the pull request has not been responded. Some file addresses have become invalidm.I only changed the valid file download address, and did not change the other code
 
-   # You can use my images(run on the Oracle Cloud Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-167-generic aarch64))
+   # You can use my images(ARM64(4 cores,24GB memory).  run on the Oracle Cloud Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-167-generic aarch64) )
 
    ```bash
    ## install required kernel modules
@@ -22,7 +22,7 @@
      androidboot.redroid_gpu_mode=guest
    ```
 
-   # You can use my images(amd64. As for the X86 architecture, there were a lot of issues with transpile, and a small amount of software was able to run.)
+   # You can use my images(AMD64. As for the X86 architecture, there were a lot of issues with transpile, and a small amount of software was able to run.)
 
    ```bash
    ## install required kernel modules
