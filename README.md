@@ -22,7 +22,7 @@
      androidboot.redroid_gpu_mode=guest
    ```
 
-   # You can use my images(amd64)
+   # You can use my images(amd64. As for the X86 architecture, there were a lot of issues with transpile, and a small amount of software was able to run.)
 
    ```bash
    ## install required kernel modules
