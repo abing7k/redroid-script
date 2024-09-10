@@ -19,6 +19,7 @@
      -v ~/redroid/redroid01/data:/data \
      -p 11101:5555 \
      abing7k/redroid:a11_magisk_arm \
+     androidboot.redroid_fps=30 \
      androidboot.redroid_gpu_mode=guest
    ```
 
